@@ -1,6 +1,7 @@
 import spacy
 import textacy
 import numpy as np
+import json
 
 import matplotlib.pyplot as plt
 
@@ -15,7 +16,7 @@ nlp = spacy.load('en_core_web_sm')
 process_claim_list
 
     process_sentence
-        
+
         calculate_*_phrases_and_vectors
 '''
 
@@ -24,7 +25,7 @@ process_claim_list
 process_article
 
     process_sentence
-        
+
         calculate_*_phrases_and_vectors
 
 
@@ -32,7 +33,7 @@ article_against_claims
 
     article_sentence_against_claim
     
-        compare_vector_array 
+        compare_vector_array
         
             meshgrid
             cosine
@@ -61,7 +62,7 @@ def calculate_noun_phrases_and_vectors(sentence):
     
     doc = nlp(sentence)
     
-    noun_phrase_objs = doc.noun_chunks    
+    noun_phrase_objs = doc.noun_chunks
     noun_phrase_texts = [noun_phrase_obj.text for noun_phrase_obj in noun_phrase_objs]
     # for some reason verb_phrase_objs can only be referenced once
     noun_phrase_objs = doc.noun_chunks
@@ -75,7 +76,7 @@ def calculate_entities_and_vectors(sentence):
     
     doc = nlp(sentence)
     
-    entity_objs = doc.ents    
+    entity_objs = doc.ents
     entity_texts = [entity_obj.text for entity_obj in entity_objs]
     # for some reason verb_phrase_objs can only be referenced once
     entity_objs = doc.ents
@@ -125,7 +126,7 @@ def process_sentence(sentence):
 
 
 def process_claim_list(claims_list):
-    # want to make it different from article processing 
+    # want to make it different from article processing
     # each claim in the claim list is definitely a sentence
     # and also so that I can attach URL to this also
     
@@ -230,7 +231,7 @@ def article_against_claims(article_text, processed_claims):
             print()
             
             if x+y+z > 2.0: 
-                detected.append((processed_sentence["claims_text"], processed_claim["claims_text"]))
+                detected.append((processed_sentence["claims_text"], processed_claim["claims_text"],x,y,z))
             
     print({"detected" : detected})
     return json.dumps({"detected" : detected})            
