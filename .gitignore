@@ -1,1 +1,3 @@
+.ipynb_checkpoints/*
 __pycache__/*
+processed_claims.pickle

@@ -5,7 +5,7 @@ import json
 
 import matplotlib.pyplot as plt
 
-nlp = spacy.load('en_core_web_sm')
+nlp = spacy.load('en_core_web_lg')
 
 ### demos available in ./function-demo.ipynb
 
