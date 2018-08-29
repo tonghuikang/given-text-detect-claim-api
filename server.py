@@ -19,13 +19,8 @@ else:
     PORT_NUMBER = 4000
 
 class IngestHandler(BaseHTTPRequestHandler):
-    def __init__(self):
-        super().__init__()
-        
-        with open('processed_claims.pickle', 'rb') as f:
-            # The protocol version used is detected automatically, so we do not
-            # have to specify it.
-            self.processed_claims = pickle.load(f)
+#     def __init__(self):
+#         super().__init__()
     
     def do_HEAD(self):
         self.send_response(200)
@@ -33,6 +28,12 @@ class IngestHandler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_POST(self):
+        # this should be loaded in init
+        with open('processed_claims.pickle', 'rb') as f:
+            # The protocol version used is detected automatically, so we do not
+            # have to specify it.
+            self.processed_claims = pickle.load(f)
+            
         '''
         sample_input = {"article_text" : "State media Straits Times is talking about how Halimah is a puppet."}
         '''
