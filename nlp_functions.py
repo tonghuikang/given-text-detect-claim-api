@@ -125,16 +125,18 @@ def process_sentence(sentence):
     return processed_claim
 
 
-def process_claim_list(claims_list):
+def process_claim_list(claims_list, debug = False):
     # want to make it different from article processing
     # each claim in the claim list is definitely a sentence
     # and also so that I can attach URL to this also
     
     processed_claims = []
-    for claim in claims_list:
+    for i,claim in enumerate(claims_list):
         processed_claim = process_sentence(claim)
         processed_claims.append(processed_claim)
-    
+        if debug:
+            print(i, end=" ")
+        
     return processed_claims
 
 
