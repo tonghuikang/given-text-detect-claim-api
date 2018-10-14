@@ -9,6 +9,7 @@ python3 -m spacy download en_core_web_sm
 python3 -m spacy download en_core_web_lg
 git clone https://github.com/tonghuikang/given-text-detect-claim-api/
 
-cd ~/given-text-detect-claim-api && jupyter nbconvert --to python process_claims.ipynb
-cd ~/given-text-detect-claim-api && python3 process_claims.py
-cd ~/given-text-detect-claim-api && python3 server.py
+cd given-text-detect-claim-api
+jupyter nbconvert --to python process_claims.ipynb
+python3 process_claims.py
+python3 server.py
