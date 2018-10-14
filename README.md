@@ -2,23 +2,10 @@
 Finally making this into an API
 
 ### Cloud installation script
+Setup Ubuntu 16.04, 20GB disk space, enable http and https.
 
 ```
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get install python3 python3-pip python3-tk
-pip3 install spacy textacy 
-pip3 install numpy matplotlib 
-pip3 install jupyter ipykernel  
-python3 -m spacy download en_core_web_sm
-python3 -m spacy download en_core_web_lg
-git clone https://github.com/tonghuikang/given-text-detect-claim-api/
-```
-
-### Preprocess the list of claims
-```
-jupyter nbconvert --to python process_claims.ipynb
-python3 process_claims.py
+curl https://raw.githubusercontent.com/tonghuikang/given-text-detect-claim-api/master/install.sh | sudo bash
 ```
 
 ### Script to start a server
